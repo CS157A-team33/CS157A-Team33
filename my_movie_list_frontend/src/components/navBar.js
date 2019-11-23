@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
 MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
+//import "./navBar.css"
 
 class NavBar extends Component {
 state = {
@@ -17,7 +18,7 @@ render() {
     <Router>
       <MDBNavbar color="default-color" dark expand="md">
         <MDBNavbarBrand>
-          <strong className="white-text">Navbar</strong>
+          <strong className="white-text">MyMovieList</strong>
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -36,11 +37,11 @@ render() {
                 <MDBDropdownToggle nav caret>
                   <div className="d-none d-md-inline">Dropdown</div>
                 </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default">
+                <MDBDropdownMenu className="dropdown-genre">
                   <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Comedy</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Drama</MDBDropdownItem>
+                  <MDBDropdownItem href="#!">Horror</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
@@ -52,20 +53,27 @@ render() {
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink className="waves-effect waves-light" to="#!">
+              <MDBNavLink className="waves-effect waves-light" to="http://google.com">
                 <MDBIcon fab icon="google-plus-g" />
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBDropdown>
+              <MDBDropdown dropleft>
                 <MDBDropdownToggle nav caret>
                   <MDBIcon icon="user" />
                 </MDBDropdownToggle>
-                <MDBDropdownMenu className="dropdown-default">
-                  <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                  <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
+                <MDBDropdownMenu className="dropdown-options">
+                  <div>
+                    <a href={"/Profile"}>Profile</a>
+                  </div>
+                  <div>
+                    <a href="./Settings"> Settings</a>
+                  </div>
+                  <div>
+                    <a href="./"> Log Out</a>
+                  </div>
+                  {/* <MDBDropdownItem active to="#!">Settings</MDBDropdownItem> */}
+                  {/* <MDBDropdownItem>Log Out</MDBDropdownItem> */}
                 </MDBDropdownMenu>
               </MDBDropdown>
             </MDBNavItem>
