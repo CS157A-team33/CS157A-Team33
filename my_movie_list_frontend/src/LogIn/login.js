@@ -1,16 +1,9 @@
-import React, { Component } from "react";
-import "./login.css";
-import { Link, Redirect } from "react-router-dom";
-import {
-  MDBRow,
-  MDBCol,
-  MDBInput,
-  MDBBtn,
-  MDBCard,
-  MDBCardBody,
-  MDBModalFooter
-} from "mdbreact";
-import Home from "../Home/Home";
+
+import React, { Component } from 'react';
+import './login.css';
+import {Link,Redirect} from 'react-router-dom'
+import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody, MDBModalFooter} from 'mdbreact';
+import UserAuth from '../userauth';
 
 class Login extends Component {
   constructor(props) {
@@ -32,7 +25,10 @@ class Login extends Component {
     const { user } = this.state;
     if (this.state.auth) {
       //route to dashboard
-      console.log("Successfully logged in");
+
+      return <Redirect to={{
+        pathname: '/home'
+      }} />;
     }
     return (
       <div className="bg">
@@ -107,29 +103,28 @@ class Login extends Component {
     );
   }
 
-  login = async _ => {
-    const { user, qResult } = this.state;
-    await fetch(`http://localhost:4040/login?email=${user.email}`).then(res =>
-      res.json().then(res =>
-        this.setState(
-          {
-            qResult: res.data
-          },
-          () =>
-            this.state.qResult.map(db =>
-              this.setState({
-                email: db.email,
-                password: db.password,
-                name: db.username
-              })
-            )
-        )
-      )
-    );
-    if (this.state.password === this.state.user.password) {
-      this.setState({ auth: true });
-    }
-  };
+
+  login = async _=>{
+    const {user, qResult} = this.state;
+    await fetch(`http://localhost:4040/login?email=${user.email}`)
+     .then(res=> res.json().then(res => this.setState({
+       qResult: res.data
+      }, ()=> this.state.qResult.map((db)=>(
+        this.setState({
+          email: db.email,
+          password: db.password,
+          name: db.username
+        })
+      ))
+      )))
+      if(this.state.password === this.state.user.password)
+      {
+        this.setState({auth: true});
+        UserAuth.setName(this.state.name);
+        UserAuth.setEmail(this.state.email);
+        UserAuth.setAuth(true);
+      }
+  }
 }
 
 export default Login;
