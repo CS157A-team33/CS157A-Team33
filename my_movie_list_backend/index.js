@@ -42,6 +42,32 @@ app.get('/login', (req,res)=>{
     });
 })
 
+app.get('/movies', (req, res)=>{
+    db.query('SELECT * FROM MOVIE', (err, results)=>{
+        if(err){
+            return res.send(err);
+        }            
+        else{
+            return res.json({
+             data: results
+            })
+        }
+    })
+})
+
+app.get('/tvseries', (req, res)=>{
+    db.query('SELECT * FROM TVSERIES', (err, results)=>{
+        if(err){
+            return res.send(err);
+        }            
+        else{
+            return res.json({
+             data: results
+            })
+        }
+    })
+})
+
 app.get('/content', (req, res)=>{
     
     db.query('SELECT * FROM CONTENT', (err, results)=>{
@@ -58,9 +84,9 @@ app.get('/content', (req, res)=>{
 
 app.get('/content/add', (req, res) =>{
     const {contentname, releaseyear,
-         contentgenre, studioname} = req.query;
-    console.log(contentname,releaseyear,contentgenre,studioname)
-    const INSERT_CONTENT = `INSERT INTO Content VALUES('${contentname}','${releaseyear}', '${contentgenre}', '${studioname}')`
+         contentgenre, studioname, poster} = req.query;
+    console.log(contentname,releaseyear,contentgenre,studioname, poster)
+    const INSERT_CONTENT = `INSERT INTO Content VALUES('${contentname}','${releaseyear}', '${contentgenre}', '${studioname}', ${poster})`
     db.query(INSERT_CONTENT, (err, results)=>{
         if(err){
             return res.send(err)
