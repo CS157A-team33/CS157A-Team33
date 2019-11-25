@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBCard,MDBCardTitle, MDBCardBody } from 'mdbreact';
 import './movieInfo.css';
+import NavBar from '../components/navBar';
 
 class MovieInfo extends Component{
     constructor(props){
@@ -202,13 +203,13 @@ class MovieInfo extends Component{
             if(this.state.movies && this.state.movies.length>0)
             {
                 return <div>
-                    {console.log("this is a movie")}
+                    <NavBar/>
                     {this.state.movies.map(this.renderMovie)}
                 </div>
             }
             else{
                 return <div>
-                {console.log("this is a tv series")}
+                <NavBar/>
                 {this.state.tvSeries.map(this.renderTvSeries)}
              </div>
         }

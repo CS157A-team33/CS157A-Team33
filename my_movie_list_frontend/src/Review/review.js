@@ -3,6 +3,7 @@ import { MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBCard, MDBCardBody, MD
 import './review.css';
 import {Link,Redirect} from 'react-router-dom';
 import UserAuth from '../userauth';
+import NavBar from '../components/navBar';
 
 class Review extends Component{
     constructor(props){
@@ -33,6 +34,7 @@ class Review extends Component{
         return(
             <div style={{height:"100vh",backgroundImage: `url(${this.props.location.state.poster})`, 
             WebkitBackgroundSize: "cover", MozBackgroundSize: "cover" , backgroundBlendMode: "luminosity"}}>
+                <NavBar/>>
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol md="6">

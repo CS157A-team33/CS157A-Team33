@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './home.css';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol,MDBContainer } from 'mdbreact';
 import {Link, Redirect} from 'react-router-dom';
+import NavBar from '../components/navBar'
 
 
 class Home extends Component{
@@ -76,6 +77,7 @@ class Home extends Component{
       
         return (
             <div className="d-inline-block" style={{float: "left", marginTop: "20px"}}>
+               
                 <MDBCol >
                     <MDBContainer>
                             <MDBCard style={{ width: "19rem" , height: "35rem", background: "rgba(1,1,1, 0.05)"}}>
@@ -130,6 +132,7 @@ class Home extends Component{
         }
         else{
             return <div>
+                <NavBar></NavBar>
             {this.state.content.map(this.renderContent)}
             </div>
         }
