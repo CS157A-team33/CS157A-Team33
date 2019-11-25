@@ -12,11 +12,8 @@ class Review extends Component{
                 review: "",
                 rating: undefined
             },
-            qResult: []
         }
     }
-
-   
 
     review = _=>{
         fetch(`http://localhost:4040/addReview?email=${UserAuth.getEmail()}&contentname=${this.props.location.state.contentname}&releaseyear=${this.props.location.state.releaseyear}&review=${this.state.content.review}&rating=${this.state.content.rating}`)
