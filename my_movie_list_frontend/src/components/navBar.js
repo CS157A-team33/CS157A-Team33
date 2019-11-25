@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
 MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
 import { BrowserRouter as Router } from 'react-router-dom';
-//import "./navBar.css"
+
 
 class NavBar extends Component {
 state = {
@@ -23,14 +23,20 @@ render() {
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav left>
-            <MDBNavItem active>
-              <MDBNavLink to="#!">Home</MDBNavLink>
+            <MDBNavItem>
+              <div style={{ marginTop:"0.5rem"}}>
+                    <a style={{ color:"white", marginTop:"2rem" }} className="pl-3" href={"/home"}>Home</a>
+              </div>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Features</MDBNavLink>
+            <div style={{ marginTop:"0.5rem"}}>
+                    <a style={{ color:"white", marginTop:"2rem" }} className="pl-3" href={"/home"}>Movies</a>
+              </div>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="#!">Pricing</MDBNavLink>
+            <div style={{ marginTop:"0.5rem"}}>
+                    <a style={{ color:"white", marginTop:"2rem" }} className="pl-3" href={"/home"}>TV Shows</a>
+              </div>
             </MDBNavItem>
             <MDBNavItem>
               <MDBDropdown>
