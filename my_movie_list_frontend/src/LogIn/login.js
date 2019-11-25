@@ -115,7 +115,7 @@ class Login extends Component {
   }
 
   login = async _ => {
-    const { user, qResult } = this.state;
+    const { user } = this.state;
     await fetch(`http://localhost:4040/login?email=${user.email}`).then(res =>
       res.json().then(res =>
         this.setState(

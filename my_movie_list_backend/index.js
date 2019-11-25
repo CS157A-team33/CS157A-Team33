@@ -73,6 +73,55 @@ app.get("/content", (req, res) => {
   });
 });
 
+app.get("/login", (req, res) => {
+  const { email } = req.query;
+  db.query(`SELECT * FROM User WHERE email = '${email}'`, (err, result) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json({
+        data: result
+      });
+    }
+  });
+});
+
+app.get("/movies", (req, res) => {
+  db.query("SELECT * FROM MOVIE", (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json({
+        data: results
+      });
+    }
+  });
+});
+
+app.get("/tvseries", (req, res) => {
+  db.query("SELECT * FROM TVSERIES", (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json({
+        data: results
+      });
+    }
+  });
+});
+
+app.get("/content", (req, res) => {
+  db.query("SELECT * FROM CONTENT", (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json({
+        data: results
+      });
+    }
+  });
+});
+
 app.get("/content/add", (req, res) => {
   const {
     contentname,
@@ -107,7 +156,9 @@ app.get("/addReview", (req, res) => {
 app.get("/getContentUnionMovie", (req, res) => {
   const { contentname, releaseyear } = req.query;
   console.log(contentname);
-  const GET_CONTENT = `SELECT contentname, releaseyear, contentgenre, studioname, poster, movie_length, description FROM content JOIN movie ON contentname = movie_contentname AND releaseyear = movie_releaseyear WHERE contentname = '${contentname}' AND releaseyear = '${releaseyear}'`;
+  const GET_CONTENT = `SELECT content.contentname, content.releaseyear, contentgenre, studioname, poster, movie_length, directorname, description
+    FROM content, content_director JOIN movie ON contentname = movie_contentname AND releaseyear = movie_releaseyear
+    WHERE content.contentname = content_director.contentname AND content.contentname = '${contentname}' AND content.releaseyear = '${releaseyear}'`;
   db.query(GET_CONTENT, (err, results) => {
     if (err) {
       return res.send(err);
@@ -121,7 +172,23 @@ app.get("/getContentUnionMovie", (req, res) => {
 
 app.get("/getContentUnionTvSeries", (req, res) => {
   const { contentname, releaseyear } = req.query;
-  const GET_CONTENT = `SELECT contentname, releaseyear, contentgenre, studioname, poster, no_of_episodes, description FROM content JOIN tvseries ON contentname = tvseries_contentname and releaseyear = tvseries_releaseyear WHERE contentname = '${contentname}' AND releaseyear = '${releaseyear}'`;
+  const GET_CONTENT = `SELECT content.contentname, content.releaseyear, contentgenre, studioname, poster, no_of_episodes, directorname, description
+    FROM content, content_director JOIN tvseries ON contentname = tvseries_contentname AND releaseyear = tvseries_releaseyear
+    WHERE content.contentname = content_director.contentname AND content.contentname = '${contentname}' AND content.releaseyear = '${releaseyear}'`;
+  db.query(GET_CONTENT, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json({
+        data: results
+      });
+    }
+  });
+});
+
+app.get("/getActors", (req, res) => {
+  const { contentname, releaseyear } = req.query;
+  const GET_CONTENT = `SELECT actorname FROM content_actor WHERE contentname = '${contentname}' AND releaseyear = '${releaseyear}'`;
   db.query(GET_CONTENT, (err, results) => {
     if (err) {
       return res.send(err);
@@ -155,18 +222,6 @@ app.get("/signup", (req, res) => {
       return res.send(err);
     } else {
       return res.send("user sucessfully added");
-    }
-  });
-});
-
-app.get("/addfriend", (req, res) => {
-  const { username, friend_username } = req.query;
-  const INSERT_FRIEND = `INSERT INTO friendlist VALUES('${username}', '${friend_username}')`;
-  db.query(INSERT_FRIEND, (err, result) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.send("friend successfully added");
     }
   });
 });

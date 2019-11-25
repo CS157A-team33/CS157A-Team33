@@ -11,9 +11,8 @@ import {
   MDBContainer
 } from "mdbreact";
 import { Link, Redirect } from "react-router-dom";
-import { release } from "os";
 import NavBar from "../components/navBar";
-import NavBarWithSearch from "../components/NavBarWithSearch";
+import Main from "../components/NavBarWithSearch";
 
 class Home extends Component {
   constructor(props) {
@@ -82,56 +81,49 @@ class Home extends Component {
     //   id.push(studioname);
 
     return (
-      <div>
-        <NavBarWithSearch />
-
-        <div>
-          {/* <NavBar username={this.props.location.state.username} />
-        <div
-          className="d-inline-block"
-          style={{ float: "left", marginTop: "20px" }}
-        > */}
-
-          <MDBCol>
-            <MDBContainer>
-              <MDBCard
-                style={{
-                  width: "19rem",
-                  height: "35rem",
-                  background: "rgba(1,1,1, 0.05)"
-                }}
-              >
-                <MDBCardImage className="img-fluid" src={poster} waves />
-                <MDBCardBody>
-                  <MDBCardTitle>{contentname}</MDBCardTitle>
-                  <MDBCardText>{description}</MDBCardText>
-                  <Link
-                    id={id}
-                    style={{ fontSize: "19px" }}
-                    onClick={this.moreInfo}
-                  >
-                    More Info ⓘ
-                  </Link>
-                  <MDBBtn
-                    id={id}
-                    type="submit"
-                    outline
-                    color="primary"
-                    style={{
-                      marginTop: "-0.6rem",
-                      float: "right",
-                      borderRadius: "20px",
-                      fontSize: "10px"
-                    }}
-                    onClick={this.addToList}
-                  >
-                    🖉
-                  </MDBBtn>
-                </MDBCardBody>
-              </MDBCard>
-            </MDBContainer>
-          </MDBCol>
-        </div>
+      <div
+        className="d-inline-block"
+        style={{ float: "left", marginTop: "20px" }}
+      >
+        <MDBCol>
+          <MDBContainer>
+            <MDBCard
+              style={{
+                width: "19rem",
+                height: "35rem",
+                background: "rgba(1,1,1, 0.05)"
+              }}
+            >
+              <MDBCardImage className="img-fluid" src={poster} waves />
+              <MDBCardBody>
+                <MDBCardTitle>{contentname}</MDBCardTitle>
+                <MDBCardText>{description}</MDBCardText>
+                <Link
+                  id={id}
+                  style={{ fontSize: "19px" }}
+                  onClick={this.moreInfo}
+                >
+                  More Info ⓘ
+                </Link>
+                <MDBBtn
+                  id={id}
+                  type="submit"
+                  outline
+                  color="primary"
+                  style={{
+                    marginTop: "-0.6rem",
+                    float: "right",
+                    borderRadius: "20px",
+                    fontSize: "10px"
+                  }}
+                  onClick={this.addToList}
+                >
+                  🖉
+                </MDBBtn>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBContainer>
+        </MDBCol>
       </div>
     );
   };
@@ -182,7 +174,13 @@ class Home extends Component {
         );
       }
     } else {
-      return <div>{this.state.content.map(this.renderContent)}</div>;
+      return (
+        <div>
+          {/* <NavBar></NavBar> */}
+          <Main></Main>
+          {this.state.content.map(this.renderContent)}
+        </div>
+      );
     }
   }
 }

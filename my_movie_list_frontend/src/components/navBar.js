@@ -14,22 +14,7 @@ import {
   MDBIcon
 } from "mdbreact";
 import { BrowserRouter as Router } from "react-router-dom";
-import Popup from "reactjs-popup";
-import AddFriend from "./AddFriend";
 //import "./navBar.css"
-
-const PopupExample = () => (
-  <Popup trigger={<a>Friend</a>} position="bottom left">
-    {close => (
-      <div>
-        Content here
-        <a className="close" onClick={close}>
-          &times;
-        </a>
-      </div>
-    )}
-  </Popup>
-);
 
 class NavBar extends Component {
   state = {
@@ -43,7 +28,7 @@ class NavBar extends Component {
   render() {
     return (
       <Router>
-        <MDBNavbar color="default-color" dark expand="md">
+        <MDBNavbar color="indigo" dark expand="md">
           <MDBNavbarBrand>
             <strong className="white-text">MyMovieList</strong>
           </MDBNavbarBrand>
@@ -72,31 +57,30 @@ class NavBar extends Component {
                   </MDBDropdownMenu>
                 </MDBDropdown>
               </MDBNavItem>
-              <MDBNavItem>
-                <MDBDropdown>
-                  <MDBDropdownToggle nav caret>
-                    <div className="d-none d-md-inline">FriendList</div>
-                  </MDBDropdownToggle>
-                  <MDBDropdownMenu className="dropdown-genre">
-                    <MDBDropdownItem>
-                      <AddFriend />
-                    </MDBDropdownItem>
-                    <MDBDropdownItem href="#!">My Connection</MDBDropdownItem>
-                  </MDBDropdownMenu>
-                </MDBDropdown>
-              </MDBNavItem>
             </MDBNavbarNav>
-
             <MDBNavbarNav right>
-              <p className="white-text" style={{ marginTop: "5%" }}>
-                {this.props.username}
-              </p>
+              <MDBNavItem>
+                <MDBNavLink className="waves-effect waves-light" to="#!">
+                  <MDBIcon fab icon="twitter" />
+                </MDBNavLink>
+              </MDBNavItem>
+              <MDBNavItem>
+                <MDBNavLink
+                  className="waves-effect waves-light"
+                  to="http://google.com"
+                >
+                  <MDBIcon fab icon="google-plus-g" />
+                </MDBNavLink>
+              </MDBNavItem>
               <MDBNavItem>
                 <MDBDropdown dropleft>
                   <MDBDropdownToggle nav caret>
                     <MDBIcon icon="user" />
                   </MDBDropdownToggle>
                   <MDBDropdownMenu className="dropdown-options">
+                    <div>
+                      <a href={"/Profile"}>Profile</a>
+                    </div>
                     <div>
                       <a href="./Settings"> Settings</a>
                     </div>
