@@ -135,7 +135,6 @@ app.get('/getContentUnionTvSeries', (req, res)=>{
     FROM content, content_director JOIN tvseries ON contentname = tvseries_contentname AND releaseyear = tvseries_releaseyear
     WHERE content.contentname = content_director.contentname AND content.contentname = '${contentname}' AND content.releaseyear = '${releaseyear}'`;
     db.query(GET_CONTENT, (err, results)=>{
-        console.log(results);
         if(err){
             return res.send(err);
         }
