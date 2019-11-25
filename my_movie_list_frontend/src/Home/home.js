@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './home.css';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol,MDBContainer } from 'mdbreact';
-import {Link, Redirect} from 'react-router-dom'
-import { release } from 'os';
+import {Link, Redirect} from 'react-router-dom';
 
 
 class Home extends Component{

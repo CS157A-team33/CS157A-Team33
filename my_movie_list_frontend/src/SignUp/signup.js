@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link,Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import { MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody} from 'mdbreact';
 
 class SignUp extends Component{

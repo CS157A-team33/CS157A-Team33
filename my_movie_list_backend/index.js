@@ -114,7 +114,9 @@ app.get('/addReview', (req,res)=>{
 app.get('/getContentUnionMovie', (req, res)=>{
     const{contentname, releaseyear} = req.query;
     console.log(contentname);
-    const GET_CONTENT = `SELECT contentname, releaseyear, contentgenre, studioname, poster, movie_length, description FROM content JOIN movie ON contentname = movie_contentname AND releaseyear = movie_releaseyear WHERE contentname = '${contentname}' AND releaseyear = '${releaseyear}'`;
+    const GET_CONTENT = `SELECT content.contentname, content.releaseyear, contentgenre, studioname, poster, movie_length, directorname, description
+    FROM content, content_director JOIN movie ON contentname = movie_contentname AND releaseyear = movie_releaseyear
+    WHERE content.contentname = content_director.contentname AND content.contentname = '${contentname}' AND content.releaseyear = '${releaseyear}'`;
     db.query(GET_CONTENT, (err, results)=>{
         if(err){
             return res.send(err);
@@ -129,7 +131,26 @@ app.get('/getContentUnionMovie', (req, res)=>{
 
 app.get('/getContentUnionTvSeries', (req, res)=>{
     const{contentname, releaseyear} = req.query;
-    const GET_CONTENT = `SELECT contentname, releaseyear, contentgenre, studioname, poster, no_of_episodes, description FROM content JOIN tvseries ON contentname = tvseries_contentname and releaseyear = tvseries_releaseyear WHERE contentname = '${contentname}' AND releaseyear = '${releaseyear}'`;
+    const GET_CONTENT =`SELECT content.contentname, content.releaseyear, contentgenre, studioname, poster, no_of_episodes, directorname, description
+    FROM content, content_director JOIN tvseries ON contentname = tvseries_contentname AND releaseyear = tvseries_releaseyear
+    WHERE content.contentname = content_director.contentname AND content.contentname = '${contentname}' AND content.releaseyear = '${releaseyear}'`;
+    db.query(GET_CONTENT, (err, results)=>{
+        console.log(results);
+        if(err){
+            return res.send(err);
+        }
+        else{
+            return res.json({
+                data: results
+            })
+        }
+    }); 
+    
+})
+
+app.get('/getActors', (req, res)=>{
+    const{contentname, releaseyear} = req.query;
+    const GET_CONTENT = `SELECT actorname FROM content_actor WHERE contentname = '${contentname}' AND releaseyear = '${releaseyear}'`;
     db.query(GET_CONTENT, (err, results)=>{
         if(err){
             return res.send(err);
