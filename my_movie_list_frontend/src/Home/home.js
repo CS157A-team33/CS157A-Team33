@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./home.css";
+
 import {
   MDBBtn,
   MDBCard,
@@ -177,7 +178,7 @@ class Home extends Component {
       return (
         <div>
           {/* <NavBar></NavBar> */}
-          <Main></Main>
+          <Main useremail={this.props.useremail}></Main>
           {this.state.content.map(this.renderContent)}
         </div>
       );

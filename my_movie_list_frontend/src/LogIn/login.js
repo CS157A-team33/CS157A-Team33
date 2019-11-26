@@ -36,7 +36,7 @@ class Login extends Component {
         <Redirect
           to={{
             pathname: "/home",
-            state: { username: this.state.name }
+            state: { useremail: this.state.user.email }
           }}
         />
       );

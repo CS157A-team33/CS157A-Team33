@@ -229,3 +229,15 @@ app.get("/signup", (req, res) => {
 app.get("/", (req, res) => {
   res.send("go to /content to see all the movies");
 });
+
+app.get("/addFriend", (req, res) => {
+  const { email, friend_email } = req.query;
+  const INSERT_USER_FRIEND = `INSERT INTO user_friend VALUES('${email}', '${friend_email}')`;
+  db.query(INSERT_USER_FRIEND, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.sent("user friend successfully added");
+    }
+  });
+});

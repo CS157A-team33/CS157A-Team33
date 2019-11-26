@@ -1,10 +1,22 @@
 import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
+import UserAuth from "../userauth";
 
 class Main extends React.Component {
-  state = {
-    searchText: ""
+  constructor(props) {
+    super(props);
+    this.state = {
+      qResult: [],
+      searchText: "",
+      email: ""
+    };
+  }
+  addFriend = _ => {
+    fetch(
+      `http://localhost:4040/addFriend?email=${this.state.email}&friend_email=${this.state.searchText}`
+    ).catch(err => console.err(err));
+    this.setState({ redirect: true });
   };
 
   handleRoute = route => () => {
@@ -33,6 +45,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
+        {console.log(this.props.location.state.useremail)}
         <Navbar bg="dark" variant="dark">
           <Nav className="mr-auto">
             <Nav.Link onClick={this.handleRoute("/home")}>Home</Nav.Link>
@@ -45,11 +58,12 @@ class Main extends React.Component {
               onChange={this.handleSearchInput}
               value={this.state.searchText}
               type="text"
-              placeholder="Search Friend username"
+              placeholder="@Search friend email"
               className="mr-sm-2"
             />
-            <Button onClick={this.handleSarchSubmit} variant="outline-info">
-              Search
+            <Button onClick={this.logined} variant="outline-info">
+              {console.log(this.state.email)}
+              Add Friend
             </Button>
           </Form>
         </Navbar>
@@ -59,5 +73,26 @@ class Main extends React.Component {
       </div>
     );
   }
+
+  logined = async _ => {
+    const { user } = this.state;
+    await fetch(
+      `http://localhost:4040/login?email=${this.props.location.state.useremail}`
+    ).then(res =>
+      res.json().then(res =>
+        this.setState(
+          {
+            qResult: res.data
+          },
+          () =>
+            this.state.qResult.map(db =>
+              this.setState({
+                email: db.email
+              })
+            )
+        )
+      )
+    );
+  };
 }
 export default withRouter(Main);
