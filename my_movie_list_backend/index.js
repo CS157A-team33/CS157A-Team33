@@ -147,6 +147,25 @@ app.get('/getContentUnionTvSeries', (req, res)=>{
     
 })
 
+
+app.get('/getReview', (req, res)=>{
+    const{email} = req.query;
+    const GET_CONTENT =`SELECT content.contentname, content.releaseyear, content.poster, review, rating
+    FROM content JOIN user_content ON content.contentname = user_content.contentname AND content.releaseyear = user_content.releaseyear
+    WHERE user_content.email = '${email}'`;
+    db.query(GET_CONTENT, (err, results)=>{
+        if(err){
+            return res.send(err);
+        }
+        else{
+            return res.json({
+                data: results
+            })
+        }
+    }); 
+    
+})
+
 app.get('/getActors', (req, res)=>{
     const{contentname, releaseyear} = req.query;
     const GET_CONTENT = `SELECT actorname FROM content_actor WHERE contentname = '${contentname}' AND releaseyear = '${releaseyear}'`;
