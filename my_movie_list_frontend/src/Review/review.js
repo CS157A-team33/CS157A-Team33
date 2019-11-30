@@ -14,6 +14,7 @@ import "./review.css";
 import { Link, Redirect } from "react-router-dom";
 import UserAuth from "../userauth";
 import NavBar from "../components/navBar";
+import NavBarWithSearch from "../components/NavBarWithSearch";
 
 class Review extends Component {
   constructor(props) {
@@ -54,7 +55,7 @@ class Review extends Component {
           backgroundBlendMode: "luminosity"
         }}
       >
-        <NavBar />
+        <NavBarWithSearch useremail={this.props.useremail} />
         <MDBContainer>
           <MDBRow>
             <MDBCol md="6">

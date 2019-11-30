@@ -12,7 +12,6 @@ import {
   MDBContainer
 } from "mdbreact";
 import { Link, Redirect } from "react-router-dom";
-import NavBar from "../components/navBar";
 import NavBarWithSearch from "../components/NavBarWithSearch";
 
 class Home extends Component {
@@ -177,11 +176,7 @@ class Home extends Component {
     } else {
       return (
         <div>
-<<<<<<< HEAD
           <NavBarWithSearch useremail={this.props.useremail}></NavBarWithSearch>
-=======
-          <Main useremail={this.props.useremail}></Main>
->>>>>>> 3ae2d776c61d1badca19a79a8629778c3b3b26d3
           {this.state.content.map(this.renderContent)}
         </div>
       );
