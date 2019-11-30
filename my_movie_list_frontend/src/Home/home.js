@@ -12,8 +12,7 @@ import {
   MDBContainer
 } from "mdbreact";
 import { Link, Redirect } from "react-router-dom";
-import NavBar from "../components/navBar";
-import Main from "../components/NavBarWithSearch";
+import NavBarWithSearch from "../components/NavBarWithSearch";
 
 class Home extends Component {
   constructor(props) {
@@ -177,7 +176,7 @@ class Home extends Component {
     } else {
       return (
         <div>
-          <Main useremail={this.props.useremail}></Main>
+          <NavBarWithSearch useremail={this.props.useremail}></NavBarWithSearch>
           {this.state.content.map(this.renderContent)}
         </div>
       );
