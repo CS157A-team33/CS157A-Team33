@@ -7,19 +7,19 @@ var UserAuth = (function() {
         this.name = name;
     }
     var getName = function(){
-        return name;
+        return this.name;
     }
   
     var setEmail = function(user_email){
-        email = user_email;
+        this.email = user_email;
     }
   
     var getEmail = function(){
-        return email;
+        return this.email;
     }
   
     var setAuth = function(authenticate){
-        auth = authenticate;
+        this.auth = authenticate;
     }
         
     var getAuth = function(){

@@ -177,7 +177,6 @@ class Home extends Component {
     } else {
       return (
         <div>
-          {/* <NavBar></NavBar> */}
           <Main useremail={this.props.useremail}></Main>
           {this.state.content.map(this.renderContent)}
         </div>
