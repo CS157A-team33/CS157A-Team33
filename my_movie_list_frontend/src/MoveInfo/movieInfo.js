@@ -74,6 +74,7 @@ class MovieInfo extends Component {
     console.log(this.state.tvseries);
   };
 
+<<<<<<< HEAD
   renderMovie = ({
     contentname,
     releaseyear,
@@ -314,6 +315,107 @@ class MovieInfo extends Component {
                           </h6>
                           {description}
                           {/* </MDBCardBody>
+=======
+    renderMovie = ({
+        contentname,
+        releaseyear,
+        contentgenre,
+        studioname,
+        poster,
+        movie_length,
+        directorname,
+        description
+       
+    }) => {
+        return (
+            
+            <div style={{height:"100vh",backgroundImage: `url(${poster})`, 
+            WebkitBackgroundSize: "cover", MozBackgroundSize: "cover" , backgroundBlendMode: "luminosity"}}>
+                <MDBContainer>
+                    <MDBRow>
+                        <MDBCol md="6">
+                            <MDBCard style={{background: "rgba(-1, -1, -1, 0.8)", marginLeft: "10rem", marginRight: "5rem",
+                                marginTop: "30px", width: "150%", height: "90vh", position:"absolute"}}>
+                                <MDBCardBody >
+                                    <div className="col">
+                                        <img className="card-img" src={poster} style={{width: "19rem", height: "27rem",
+                                            marginTop: "5rem", position: "absolute"}} >
+                                        </img>
+                                        <MDBCard style={{background: "rgba(-1, -1, -1, 0.8)", float:"center",
+                                            marginLeft: "21rem", marginRight: "5rem", marginTop: "1.5rem", width: "28rem", height: "35rem", position:"absolute"}}>
+                                            <MDBCardTitle style={{textAlign: "center", marginTop: "1rem",fontWeight:"bold",
+                                             fontFamily: 'Tahoma', color: 'White', fontSize:"30px"}}>
+                                                    {contentname} ({releaseyear})
+                                            </MDBCardTitle>
+                                            <MDBCardTitle style={{textAlign: "left", marginLeft: "1rem", fontFamily: 'Open Sans', color:"LightSeaGreen"}}>   
+                                                <MDBCardBody style={{color: "White", fontSize: "13px"}}>
+                                                <h6 style={{color: "SkyBlue", fontSize: "20px"}}>Detail </h6>
+                                                     {description}
+                                              
+                                                <h6 style={{color: "SkyBlue", fontSize: "20px", marginTop: "1rem"}}>Genre </h6>
+                                                    {contentgenre}
+                                               
+                                                <h6 style={{color: "SkyBlue", fontSize: "20px",marginTop: "1rem"}}>Studio </h6>
+                                                    {studioname}
+                                          
+                                                <h6 style={{color: "SkyBlue", fontSize: "20px",marginTop: "1rem"}}>Length </h6>
+                                                    {movie_length} Minutes
+                                
+                                                <h6 style={{color: "SkyBlue", fontSize: "20px",marginTop: "1rem"}}>Director </h6>
+                                                    {directorname}
+                                                <h6 style={{color: "SkyBlue", fontSize: "20px",marginTop: "1rem"}}>Actors </h6>
+                                                    {this.state.actorString}
+                                                </MDBCardBody>
+                                            </MDBCardTitle>
+                                        </MDBCard>
+                                    </div>
+                                </MDBCardBody>
+                            </MDBCard>
+                        </MDBCol>
+                    </MDBRow>
+                </MDBContainer>
+            </div>
+        );
+    }
+
+
+    renderTvSeries = ({
+        contentname,
+        releaseyear,
+        contentgenre,
+        studioname,
+        poster,
+        no_of_episodes,
+        directorname,
+        description
+       
+    }) => {
+        return (
+            
+            <div style={{height:"100vh",backgroundImage: `url(${poster})`, 
+            WebkitBackgroundSize: "cover", MozBackgroundSize: "cover" , backgroundBlendMode: "luminosity"}}>
+                <MDBContainer>
+                    <MDBRow>
+                        <MDBCol md="6">
+                            <MDBCard style={{background: "rgba(-1, -1, -1, 0.8)", marginLeft: "10rem", marginRight: "5rem",
+                                marginTop: "30px", width: "150%", height: "90vh", position:"absolute"}}>
+                                <MDBCardBody >
+                                    <div className="col">
+                                        <img className="card-img" src={poster} style={{width: "19rem", height: "27rem",
+                                            marginTop: "5rem", position: "absolute"}} >
+                                        </img>
+                                        <MDBCard style={{background: "rgba(-1, -1, -1, 0.8)", float:"center",
+                                            marginLeft: "21rem", marginRight: "5rem", marginTop: "1.5rem", width: "28rem", height: "35rem", position:"absolute"}}>
+                                            <MDBCardTitle style={{textAlign: "center", marginTop: "1rem",fontWeight:"bold",
+                                             fontFamily: 'Tahoma', color: 'White', fontSize:"30px"}}>
+                                                    {contentname} ({releaseyear})
+                                            </MDBCardTitle>
+                                            <MDBCardTitle style={{textAlign: "left", marginLeft: "1rem", fontFamily: 'Open Sans', color:"LightSeaGreen"}}>   
+                                                <MDBCardBody style={{color: "White", fontSize: "13px"}}>
+                                                <h6 style={{color: "SkyBlue", fontSize: "20px"}}>Detail </h6>
+                                                     {description}
+                                                {/* </MDBCardBody>
+>>>>>>> 3ae2d776c61d1badca19a79a8629778c3b3b26d3
                                                 <MDBCardBody style={{color: "White", fontSize: "15px"}}> */}
                           <h6
                             style={{

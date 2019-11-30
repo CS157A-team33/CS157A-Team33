@@ -14,7 +14,6 @@ import "./review.css";
 import { Link, Redirect } from "react-router-dom";
 import UserAuth from "../userauth";
 import NavBar from "../components/navBar";
-import NavBarWithSearch from "../components/NavBarWithSearch";
 
 class Review extends Component {
   constructor(props) {
@@ -40,7 +39,7 @@ class Review extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect push to="/home"></Redirect>;
+      return <Redirect to={{ pathname: "/home" }} />;
     }
     const { content } = this.state;
     console.log(UserAuth.getAuth());
@@ -55,7 +54,7 @@ class Review extends Component {
           backgroundBlendMode: "luminosity"
         }}
       >
-        <NavBarWithSearch useremail={this.props.useremail} />
+        <NavBar />
         <MDBContainer>
           <MDBRow>
             <MDBCol md="6">
@@ -66,8 +65,7 @@ class Review extends Component {
                   marginRight: "5rem",
                   marginTop: "30px",
                   width: "150%",
-                  height: "90vh",
-                  position: "fized"
+                  height: "85vh"
                 }}
               >
                 <MDBCardBody>
@@ -76,23 +74,47 @@ class Review extends Component {
                       className="card-img"
                       src={this.props.location.state.poster}
                       style={{
-                        width: "18rem",
-                        height: "25rem",
-                        marginLeft: "1rem",
-                        marginTop: "3rem",
+                        width: "19.5rem",
+                        height: "28rem",
+                        marginTop: "4rem",
                         position: "absolute"
                       }}
                     ></img>
+                    <MDBCard
+                      style={{
+                        background: "rgba(-1, -1, -1, 0.1)",
+                        backgroundBlendMode: "luminosity",
+                        position: "absolute",
+                        marginLeft: "20rem",
+                        marginRight: "1rem",
+                        width: "27rem",
+                        height: "7rem"
+                      }}
+                    >
+                      <h3
+                        style={{
+                          textAlign: "center",
+                          marginTop: "1rem",
+                          fontWeight: "bold",
+                          fontFamily: "Tahoma",
+                          color: "White",
+                          fontSize: "30px"
+                        }}
+                      >
+                        {this.props.location.state.contentname}
+                      </h3>
+                    </MDBCard>
 
                     <label
-                      class="input-group-text"
+                      className="input-group-text"
                       for="inputGroupSelect01"
                       style={{
-                        width: "6rem",
+                        width: "7rem",
                         height: "2rem",
                         position: "absolute",
                         marginLeft: "29.5rem",
-                        marginTop: "7.5rem"
+                        marginTop: "7.5rem",
+                        borderRadius: "20px"
                       }}
                     >
                       Rating
@@ -106,6 +128,7 @@ class Review extends Component {
                       className="custom-select"
                       style={{
                         marginLeft: "34.5rem",
+                        borderRadius: "20px",
                         width: "4rem",
                         height: "2rem",
                         position: "absolute",
@@ -129,8 +152,9 @@ class Review extends Component {
                     <div
                       className="progress"
                       style={{
-                        marginLeft: "21.5rem",
-                        width: "24.5rem",
+                        borderRadius: "2rem",
+                        marginLeft: "24.5rem",
+                        width: "20rem",
                         height: "1.3rem",
                         position: "absolute",
                         marginTop: "10rem"
@@ -138,7 +162,7 @@ class Review extends Component {
                     >
                       <div
                         className="progress-bar"
-                        role="progressbar"
+                        role="progress-bar"
                         style={{ width: `${this.state.content.rating * 10}%` }}
                       >
                         {this.state.content.rating}
@@ -175,6 +199,7 @@ class Review extends Component {
                             <MDBBtn
                               color="blue"
                               type="submit"
+                              style={{ borderRadius: "50px" }}
                               onClick={this.review}
                             >
                               {" "}
@@ -184,32 +209,6 @@ class Review extends Component {
                         </form>
                       </MDBCardBody>
                     </div>
-
-                    <MDBCard
-                      style={{
-                        background: "rgba(-1, -1, -1, 0.9)",
-                        backgroundBlendMode: "luminosity",
-                        position: "absolute",
-                        marginLeft: "1rem",
-                        marginRight: "1rem",
-                        marginTop: "30rem",
-                        width: "18rem",
-                        height: "7rem"
-                      }}
-                    >
-                      <h3
-                        style={{
-                          float: "center",
-                          color: "White",
-                          textAlign: "center",
-                          marginTop: "1rem",
-                          fontWeight: "bold",
-                          fontFamily: "Open Sans"
-                        }}
-                      >
-                        {this.props.location.state.contentname}
-                      </h3>
-                    </MDBCard>
                   </div>
                 </MDBCardBody>
               </MDBCard>
