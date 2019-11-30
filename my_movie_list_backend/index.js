@@ -230,6 +230,20 @@ app.get("/", (req, res) => {
   res.send("go to /content to see all the movies");
 });
 
+app.get("/getFriend", (req, res) => {
+  const { email } = req.query;
+  const GET_FRIEND = `SELECT friend_email FROM user_friend WHERE email = '${email}'`;
+  db.query(GET_FRIEND, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.json({
+        data: results
+      });
+    }
+  });
+});
+
 app.get("/addFriend", (req, res) => {
   const { email, friend_email } = req.query;
   const INSERT_USER_FRIEND = `INSERT INTO user_friend VALUES('${email}', '${friend_email}')`;
@@ -237,7 +251,7 @@ app.get("/addFriend", (req, res) => {
     if (err) {
       return res.send(err);
     } else {
-      return res.sent("user friend successfully added");
+      return res.send("user friend successfully added");
     }
   });
 });

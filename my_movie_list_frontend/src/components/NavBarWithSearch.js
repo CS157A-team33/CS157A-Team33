@@ -10,7 +10,7 @@ import {
   DropdownButton
 } from "react-bootstrap";
 
-class Main extends React.Component {
+class NavBarWithSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,7 +50,7 @@ class Main extends React.Component {
       <div>
         <Navbar bg="dark" variant="dark">
           <Nav className="mr-auto">
-            <Nav.Link>Home</Nav.Link>
+            <Nav.Link href="/home">Home</Nav.Link>
             <Nav.Link>Category</Nav.Link>
           </Nav>
           <Form inline>
@@ -81,4 +81,4 @@ class Main extends React.Component {
     this.setState({ searchText: "" });
   };
 }
-export default withRouter(Main);
+export default withRouter(NavBarWithSearch);
