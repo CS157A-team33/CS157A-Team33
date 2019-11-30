@@ -3,6 +3,7 @@ import './home.css';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol,MDBContainer } from 'mdbreact';
 import {Link, Redirect} from 'react-router-dom';
 import NavBar from '../components/navBar'
+import UserAuth from '../userauth';
 
 
 class Home extends Component{
@@ -28,13 +29,14 @@ class Home extends Component{
         this.getMovies();
     }
 
-    getContent = () =>{
-        fetch(`http://localhost:4040/content`)
+    getContent = async _=>{
+        await fetch(`http://localhost:4040/content`)
         .then(res => res.json())
         .then(res => {
             this.setState({ content: res.data});
         })
         .catch(err => console.error(err));
+        console.log(UserAuth.getEmail());
     };
 
     getTvSeries = () =>{
