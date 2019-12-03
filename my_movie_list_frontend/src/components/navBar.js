@@ -36,26 +36,13 @@ class NavBar extends Component {
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
             <MDBNavbarNav left>
               <MDBNavItem active>
-                <MDBNavLink to="#!">Home</MDBNavLink>
+                <MDBNavLink to="/Home">Home</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
                 <MDBNavLink to="#!">Features</MDBNavLink>
               </MDBNavItem>
               <MDBNavItem>
                 <MDBNavLink to="#!">Pricing</MDBNavLink>
-              </MDBNavItem>
-              <MDBNavItem>
-                <MDBDropdown>
-                  <MDBDropdownToggle nav caret>
-                    <div className="d-none d-md-inline">Dropdown</div>
-                  </MDBDropdownToggle>
-                  <MDBDropdownMenu className="dropdown-genre">
-                    <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                    <MDBDropdownItem href="#!">Comedy</MDBDropdownItem>
-                    <MDBDropdownItem href="#!">Drama</MDBDropdownItem>
-                    <MDBDropdownItem href="#!">Horror</MDBDropdownItem>
-                  </MDBDropdownMenu>
-                </MDBDropdown>
               </MDBNavItem>
             </MDBNavbarNav>
             <MDBNavbarNav right>
@@ -79,7 +66,7 @@ class NavBar extends Component {
                   </MDBDropdownToggle>
                   <MDBDropdownMenu className="dropdown-options">
                     <div>
-                      <a href={"/Profile"}>Profile</a>
+                      <a href="./Profile">Profile</a>
                     </div>
                     <div>
                       <a href="./Settings"> Settings</a>
@@ -87,8 +74,6 @@ class NavBar extends Component {
                     <div>
                       <a href="./"> Log Out</a>
                     </div>
-                    {/* <MDBDropdownItem active to="#!">Settings</MDBDropdownItem> */}
-                    {/* <MDBDropdownItem>Log Out</MDBDropdownItem> */}
                   </MDBDropdownMenu>
                 </MDBDropdown>
               </MDBNavItem>

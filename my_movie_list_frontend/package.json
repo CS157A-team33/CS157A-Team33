@@ -3,13 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
+    "emotion-theming": "^10.0.19",
+    "local-storage-fallback": "^4.1.1",
     "mdbreact": "^4.22.0",
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-dom": "^16.11.0",
+    "react-native-settings-page": "^2.0.6",
     "react-scripts": "3.2.0",
+    "react-settings-pane": "^0.1.5",
     "react-use-localstorage": "^3.4.1",
-    "reactjs-popup": "^1.5.0"
+    "reactjs-popup": "^1.5.0",
+    "styled-components": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
