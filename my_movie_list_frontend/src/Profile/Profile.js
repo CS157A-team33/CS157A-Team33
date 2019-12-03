@@ -24,9 +24,9 @@ class Profile extends Component {
         })
         .catch(err => console.error(err));
         console.log(UserAuth.getEmail());
-        this.state.reviewList.map(e => {
-            console.log(e);
-        });
+        // this.state.reviewList.map(e => {
+        //     console.log(e);
+        //});
     };
 
 

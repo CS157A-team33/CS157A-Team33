@@ -134,10 +134,10 @@ class Login extends Component {
       )
     );
     if (this.state.password === this.state.user.password) {
-      this.setState({ auth: true });
       UserAuth.setName(this.state.name);
       UserAuth.setEmail(this.state.email);
       UserAuth.setAuth(true);
+      this.setState({ auth: true });
     }
   };
 }

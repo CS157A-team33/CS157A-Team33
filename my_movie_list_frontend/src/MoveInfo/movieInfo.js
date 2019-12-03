@@ -9,7 +9,7 @@ import {
 } from "mdbreact";
 import "./movieInfo.css";
 
-import NavBarWithSearch from "../components/NavBarWithSearch";
+import NavBar from "../components/navBar";
 
 class MovieInfo extends Component {
   constructor(props) {
@@ -383,14 +383,14 @@ class MovieInfo extends Component {
     if (this.state.movies && this.state.movies.length > 0) {
       return (
         <div>
-          <NavBarWithSearch useremail={this.props.useremail} />
+          <NavBar useremail={this.props.useremail} />
           {this.state.movies.map(this.renderMovie)}
         </div>
       );
     } else {
       return (
         <div>
-          <NavBarWithSearch useremail={this.props.useremail} />
+          <NavBar useremail={this.props.useremail} />
           {this.state.tvSeries.map(this.renderTvSeries)}
         </div>
       );

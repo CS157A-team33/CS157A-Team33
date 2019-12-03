@@ -244,6 +244,24 @@ app.get("/getFriend", (req, res) => {
   });
 });
 
+app.get('/getReview', (req, res)=>{
+  const{email} = req.query;
+  const GET_CONTENT =`SELECT content.contentname, content.releaseyear, content.poster, review, rating
+  FROM content JOIN user_content ON content.contentname = user_content.contentname AND content.releaseyear = user_content.releaseyear
+  WHERE user_content.email = '${email}'`;
+  db.query(GET_CONTENT, (err, results)=>{
+      if(err){
+          return res.send(err);
+      }
+      else{
+          return res.json({
+              data: results
+          })
+      }
+  }); 
+
+})
+
 app.get("/addFriend", (req, res) => {
   const { email, friend_email } = req.query;
   const INSERT_USER_FRIEND = `INSERT INTO user_friend VALUES('${email}', '${friend_email}')`;
