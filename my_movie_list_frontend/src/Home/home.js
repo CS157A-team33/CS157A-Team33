@@ -18,6 +18,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      useremail:'',
       moreInfo: false,
       addList: false,
       e: undefined,
@@ -34,6 +35,7 @@ class Home extends Component {
     this.getContent();
     this.getTvSeries();
     this.getMovies();
+    this.setState({useremail: this.props.location.state.useremail});
   }
 
   getContent = () => {
@@ -152,6 +154,7 @@ class Home extends Component {
             to={{
               pathname: "/review",
               state: {
+                useremail: this.props.location.state.useremail,
                 contentname: this.state.e[0],
                 releaseyear: this.state.e[1],
                 poster: this.state.e[2]
@@ -165,6 +168,7 @@ class Home extends Component {
             to={{
               pathname: "/movieInfo",
               state: {
+                useremail: this.state.useremail,
                 contentname: this.state.e[0],
                 releaseyear: this.state.e[1],
                 poster: this.state.e[2]
@@ -176,7 +180,8 @@ class Home extends Component {
     } else {
       return (
         <div>
-          <NavBar useremail={this.props.useremail}></NavBar>
+          {console.log(this.state.useremail)}
+          <NavBar useremail= {this.state.useremail}></NavBar>
           {this.state.content.map(this.renderContent)}
         </div>
       );

@@ -19,6 +19,7 @@ class Review extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      useremail:'',
       content: {
         review: "",
         rating: undefined
@@ -26,9 +27,14 @@ class Review extends Component {
     };
   }
 
+  componentWillMount(){
+    this.setState({useremail: this.props.location.state.useremail});
+  }
+
+
   review = _ => {
     fetch(
-      `http://localhost:4040/addReview?email=${UserAuth.getEmail()}&contentname=${
+      `http://localhost:4040/addReview?email=${this.props.location.state.useremail}&contentname=${
         this.props.location.state.contentname
       }&releaseyear=${this.props.location.state.releaseyear}&review=${
         this.state.content.review
@@ -39,11 +45,11 @@ class Review extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={{ pathname: "/home" }} />;
+      return <Redirect to={{ pathname: "/home", 
+      state: { useremail: this.props.location.state.useremail }}} />;
     }
     const { content } = this.state;
-    console.log(UserAuth.getAuth());
-    console.log(UserAuth.getEmail());
+    console.log(this.props.location.state.useremail);
     return (
       <div
         style={{
@@ -54,8 +60,9 @@ class Review extends Component {
           backgroundBlendMode: "luminosity"
         }}
       >
-        <NavBar/>
-        {/* <NavBarWithSearch useremail={this.props.useremail} /> */}
+        {console.log(this.state.useremail)}
+        <NavBar useremail= {this.state.useremail}/>
+        
         <MDBContainer>
           <MDBRow>
             <MDBCol md="6">

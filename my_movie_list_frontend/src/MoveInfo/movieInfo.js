@@ -15,6 +15,7 @@ class MovieInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      useremail:'',
       content: [],
       actors: [],
       actorString: "",
@@ -27,6 +28,7 @@ class MovieInfo extends Component {
     this.getContentUnionMovie();
     this.getContentUnionTvSeries();
     this.getActors();
+    this.setState({useremail: this.props.location.state.useremail});
   }
 
   getContentUnionMovie = async _ => {
@@ -383,14 +385,14 @@ class MovieInfo extends Component {
     if (this.state.movies && this.state.movies.length > 0) {
       return (
         <div>
-          <NavBar useremail={this.props.useremail} />
+          <NavBar useremail={this.state.useremail} />
           {this.state.movies.map(this.renderMovie)}
         </div>
       );
     } else {
       return (
         <div>
-          <NavBar useremail={this.props.useremail} />
+          <NavBar useremail={this.state.useremail} />
           {this.state.tvSeries.map(this.renderTvSeries)}
         </div>
       );

@@ -1,33 +1,45 @@
 import React, { Component } from "react";
-import "./Profile.css";
+import "./friendprofile.css";
 import NavBar from "../components/navBar"
 import UserAuth from "../userauth";
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol,MDBContainer } from 'mdbreact';
 
 
-class Profile extends Component {
+class FriendProfile extends Component {
     constructor(props){
         super(props);
         this.state ={
             useremail:'',
+            friendemail:'',
             reviewList: []
         }
     }
 
     componentWillMount(){
-        console.log(this.props.location.state.useremail)
+        console.log(this.props.location.state.friendemail)
         this.setState({useremail: this.props.location.state.useremail});
+        this.setState({friendemail: this.props.location.state.friendemail});
+        this.getReview();   
+    }
+
+    componentWillReceiveProps(prevProps, prevState)
+    {
+        if (prevState.friendemail !== this.state.friendemail) {
+        console.log("This si will Reciece" + this.props.location.state.friendemail)
+        this.setState({useremail: this.props.location.state.useremail});
+        this.setState({friendemail: this.props.location.state.friendemail});
         this.getReview();
+        }
     }
 
     getReview = async _=> {
-       await fetch(`http://localhost:4040/getReview?email=${this.props.location.state.useremail}`)
+       await fetch(`http://localhost:4040/getReview?email=${this.props.location.state.friendemail}`)
         .then(res => res.json())
         .then(res => {
             this.setState({ reviewList: res.data});
         })
         .catch(err => console.error(err));
-        console.log(this.state.useremail + "This is username");
+        console.log(this.state.friendemail + "This is username");
     };
 
 
@@ -56,13 +68,15 @@ class Profile extends Component {
             </div>
         )
     }
-
     render(){
         return <div>
                 <NavBar useremail= {this.state.useremail}></NavBar>
                 {this.state.reviewList.map(this.reviewRender)}
-            </div>
+                {console.log(this.props.location.state.friendemail)}
+                
+        </div>
     }
+    
 }
 
-export default Profile;
+export default FriendProfile;

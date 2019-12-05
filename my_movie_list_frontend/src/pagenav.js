@@ -7,7 +7,7 @@ import Review from './Review/review'
 import MovieInfo from './MoveInfo/movieInfo'
 import Profile from './Profile/Profile'
 import Settings from './Settings/Settings';
-
+import FriendProfile from './friendprofile/friendprofile';
 class PageNav extends Component{
     render(){
         return (
@@ -20,6 +20,7 @@ class PageNav extends Component{
                     <Route path = "/review" exact component = {Review}/>
                     <Route path = "/movieInfo" exact component = {MovieInfo}/>
                     <Route path = "/Settings" exact component = {Settings}/>
+                    <Route path = "/friendprofile" exact component = {FriendProfile}/>
                 </Switch>
             </BrowserRouter>
         );
