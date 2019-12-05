@@ -6,7 +6,7 @@ import {
   Form,
   FormControl,
 } from "react-bootstrap";
-import UserAuth from "../userauth";
+
 
 
 class NavBar extends Component {
@@ -84,12 +84,12 @@ render() {
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to={{ pathname: "/home", state: { useremail:this.state.useremail } }} style={{fontSize:'17px', fontWeight:'bold'}}>
+              <MDBNavLink to={{ pathname: "/movie", state: { useremail:this.state.useremail } }} style={{fontSize:'17px', fontWeight:'bold'}}>
               Movie
               </MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-            <MDBNavLink to={{ pathname: "/home", state: { useremail:this.state.useremail } }} style={{fontSize:'17px', fontWeight:'bold'}}>
+            <MDBNavLink to={{ pathname: "/tvseries", state: { useremail:this.state.useremail } }} style={{fontSize:'17px', fontWeight:'bold'}}>
               TV Show
               </MDBNavLink>
             </MDBNavItem>

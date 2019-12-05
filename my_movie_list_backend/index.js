@@ -38,7 +38,8 @@ app.get("/login", (req, res) => {
 });
 
 app.get("/movies", (req, res) => {
-  db.query("SELECT * FROM MOVIE", (err, results) => {
+  const GET_MOVIES= "SELECT * FROM content WHERE EXISTS(SELECT * FROM movie WHERE contentname = movie_contentname AND releaseyear = movie_releaseyear)"
+  db.query(GET_MOVIES, (err, results) => {
     if (err) {
       return res.send(err);
     } else {
@@ -46,11 +47,13 @@ app.get("/movies", (req, res) => {
         data: results
       });
     }
+    
   });
 });
 
 app.get("/tvseries", (req, res) => {
-  db.query("SELECT * FROM TVSERIES", (err, results) => {
+  const GET_TVSERIES= "SELECT * FROM content WHERE EXISTS(SELECT * FROM tvseries WHERE contentname = tvseries_contentname AND releaseyear = tvseries_releaseyear)"
+  db.query(GET_TVSERIES, (err, results) => {
     if (err) {
       return res.send(err);
     } else {
@@ -203,6 +206,7 @@ app.get("/getActors", (req, res) => {
 app.get("/getMovie", (req, res) => {
   const { movie_contentname, movie_releaseyear } = req.query;
   const GET_CONTENT = `SELECT * FROM movie WHERE movie_contentname = '${movie_contentname}' AND movie_releaseyear = '${movie_releaseyear}'`;
+  
   db.query(GET_CONTENT, (err, results) => {
     if (err) {
       return res.send(err);

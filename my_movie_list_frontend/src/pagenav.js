@@ -8,6 +8,9 @@ import MovieInfo from './MoveInfo/movieInfo'
 import Profile from './Profile/Profile'
 import Settings from './Settings/Settings';
 import FriendProfile from './friendprofile/friendprofile';
+import Movie from './Movie/movie'
+import TvSeries from './TvSeries/tvseries';
+
 class PageNav extends Component{
     render(){
         return (
@@ -21,6 +24,8 @@ class PageNav extends Component{
                     <Route path = "/movieInfo" exact component = {MovieInfo}/>
                     <Route path = "/Settings" exact component = {Settings}/>
                     <Route path = "/friendprofile" exact component = {FriendProfile}/>
+                    <Route path = "/movie" exact component = {Movie}></Route>
+                    <Route path = "/tvseries" exact component = {TvSeries}></Route>
                 </Switch>
             </BrowserRouter>
         );
