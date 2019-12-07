@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse,
-  MDBDropdown, MDBDropdownToggle, MDBBtn, MDBBtnGroup, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
+  MDBDropdown, MDBDropdownToggle, MDBInput, MDBBtn, MDBCol,MDBFormInline, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 import { BrowserRouter as Router,Link, Redirect } from 'react-router-dom';
 import {
   Form,
@@ -45,7 +45,7 @@ getFriend = async _ => {
 renderFriend = ( {friend_email}) => {
 return <MDBDropdownItem>
         <MDBNavLink style={{color: 'black'}} to={{ pathname: "/friendprofile", 
-        state: { useremail:this.state.useremail , friendemail: friend_email} }}>
+        state: { useremail:this.state.useremail , friendemail: friend_email} }} key = {friend_email}>
             {friend_email}
         </MDBNavLink>
         <MDBDropdownItem divider />
@@ -58,6 +58,7 @@ handleSearchInput(e) {
     searchText: e.target.value
   });
 }
+
 
 handleAddFriend = _ => {
   fetch(
@@ -77,6 +78,8 @@ render() {
         </MDBNavbarBrand>
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+
+          {/* ////////////////////This are the link on the left side of the NavBar/////////////////////////////// */}
           <MDBNavbarNav left>
             <MDBNavItem>
             <MDBNavLink to={{ pathname: "/home", state: { useremail: this.state.useremail } }} style={{fontSize:'17px', fontWeight:'bold'}}>
@@ -93,22 +96,23 @@ render() {
               TV Show
               </MDBNavLink>
             </MDBNavItem>
+         
           </MDBNavbarNav>
-          
+
+
+          {/* ///////////////////////////This is the friends add seach input/////////////////////////////////////// */}
           <Form inline>
-            <FormControl
-              onChange={this.handleSearchInput.bind(this)}
-              value={this.state.searchText}
-              type="text"
-              placeholder="@Search Friend's Email"
-              className="mr-sm-2"
-              style={{borderRadius:"20px"}}
-            />
-            
+            <MDBFormInline className="md-form mr-auto mb-4" style={{height:'5px'}}>
+              <input className="form-control mr-sm-2" type="text" placeholder="@Search Email" aria-label="Search"
+              onChange={this.handleSearchInput.bind(this)} value={this.state.searchText} style={{marginTop:'-10%'}}/>
+            </MDBFormInline>
           </Form>
-          <input className='inline' type="image"src = "https://icons-for-free.com/iconfiles/png/512/user+add+new+plus+icon-1320196240269097543.png" width='3%'onClick={this.handleAddFriend}/>
+          <input className='inline' type="image"
+            src = "https://icons-for-free.com/iconfiles/png/512/user+add+new+plus+icon-1320196240269097543.png"
+             width='3%'onClick={this.handleAddFriend}/>
 
           
+          {/* ////////////////////////////This are the icon in the right side of NavBar/////////////////////////////// */}
           <MDBNavbarNav right >
           <MDBDropdown>
             <MDBDropdownToggle caret color="primary" style={{borderRadius: "20px"}} >
@@ -129,7 +133,7 @@ render() {
           </MDBNavItem> 
 
           <MDBNavItem>
-            <MDBNavLink to={{ pathname: "/profile", state: { useremail:this.state.useremail, friendemail: this.state.useremail } }}
+            <MDBNavLink to={{ pathname: "/profile", state: { useremail:this.props.useremail} }}
             style={{marginTop: '0.5rem'}}>
                 <img height='48rem' style={{marginTop:'-6px'}}
                 src="https://icons-for-free.com/iconfiles/png/512/human+male+profile+user+icon-1320196240448793481.png"/>
@@ -146,20 +150,6 @@ render() {
         </MDBCollapse>
       </MDBNavbar>
     );
-  }
-
-  home= e => {
-    console.log(e.target.id);
-    return (
-      <Link to={{
-            pathname: "/home",
-            state: { useremail:e.target.id }
-      }}/>
-    );
-  };
-
-  logout(){
-    return <Redirect to={{pathname: '/'}} />;
   }
 }
 

@@ -12,7 +12,7 @@ import {
 } from "mdbreact";
 import "./review.css";
 import { Link, Redirect } from "react-router-dom";
-import UserAuth from "../userauth";
+
 import NavBar from "../components/navBar";
 
 class Review extends Component {

@@ -277,3 +277,28 @@ app.get("/addFriend", (req, res) => {
     }
   });
 });
+
+app.get("/deleteReview", (req, res) => {
+  const { email, contentname, releaseyear } = req.query;
+  const DELETE_REVIEW = `DELETE FROM user_content WHERE email='${email}' AND contentname ='${contentname}' AND releaseyear='${releaseyear}'`;
+  db.query(DELETE_REVIEW, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.send("Review Deleted");
+    }
+  });
+});
+
+app.get("/updateReview", (req, res) => {
+  const { email, contentname, releaseyear, review, rating } = req.query;
+  const UPDATE_REVIEW =
+  `UPDATE user_content SET review='${review}', rating = '${rating}' WHERE email = '${email}' AND contentname = '${contentname}' AND releaseyear = '${releaseyear}'`;
+  db.query(UPDATE_REVIEW, (err, results) => {
+    if (err) {
+      return res.send(err);
+    } else {
+      return res.send("Successfully Updated");
+    }
+  });
+});

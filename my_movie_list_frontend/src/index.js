@@ -8,7 +8,7 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 import PageNav from './pagenav';
 
-ReactDOM.render(<PageNav/>, document.getElementById('root'));
+ReactDOM.render(<PageNav></PageNav>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

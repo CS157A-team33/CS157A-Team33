@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./friendprofile.css";
 import NavBar from "../components/navBar"
-import UserAuth from "../userauth";
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol,MDBContainer } from 'mdbreact';
 
 
@@ -50,7 +49,21 @@ class FriendProfile extends Component {
         poster,
         review,
         rating
+        
     }) => {
+        var stars = [];
+        for(let i=0; i<10;i++){
+            if(i<rating)
+            {
+                stars.push(<p1><img style={{marginRight:'5px',heihgt:'30px', width: '20px'}} src='https://images.emojiterra.com/google/android-10/512px/2b50.png'></img></p1>)
+            }
+            else
+            {
+                stars.push(<p1><img style={{margin:'-5px',heihgt:'30px', width: '35px'}} src='https://myrealdomain.com/images/black-star-icon-7.png'></img></p1>)
+            }
+            
+            
+        }
         return (
             <div className="d-inline-block" style={{float: "left", marginTop: "20px"}}>
                 <MDBCol >
@@ -60,7 +73,7 @@ class FriendProfile extends Component {
                             <MDBCardBody>
                                 <MDBCardTitle>{contentname}{' '}{releaseyear}</MDBCardTitle>
                                 <MDBCardText >{review}</MDBCardText>
-                                <MDBCardText >Rating: {rating}</MDBCardText>
+                                <MDBCardText >{stars}</MDBCardText>
                             </MDBCardBody>
                             </MDBCard>
                     </MDBContainer>

@@ -10,7 +10,6 @@ import {
   MDBCardBody,
   MDBModalFooter
 } from "mdbreact";
-import UserAuth from "../userauth";
 
 class Login extends Component {
   constructor(props) {
@@ -134,9 +133,6 @@ class Login extends Component {
       )
     );
     if (this.state.password === this.state.user.password) {
-      UserAuth.setName(this.state.name);
-      UserAuth.setEmail(this.state.email);
-      UserAuth.setAuth(true);
       this.setState({ auth: true });
     }
   };
