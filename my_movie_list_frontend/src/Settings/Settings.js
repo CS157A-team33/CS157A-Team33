@@ -140,7 +140,7 @@
 
 
 import React, { useState } from 'react';
-// import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -179,6 +179,6 @@ function Settings(){
     )
 }
 
-// const rootElement = document.getElementById('root');
-// ReactDOM.render(<Settings />, rootElement);
+const rootElement = document.getElementById('root');
+ReactDOM.render(<Settings />, rootElement);
 export default Settings;
