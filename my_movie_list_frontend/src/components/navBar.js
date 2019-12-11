@@ -125,12 +125,12 @@ render() {
             </MDBDropdown>
 
 
-          <MDBNavItem>
+          {/* <MDBNavItem>
             <MDBNavLink style={{marginTop: '0.2rem'}} to="/Settings">
                  <img height='45rem'
                  src="https://www.ifarm.ie/wp-content/uploads/2015/09/settings-icon-orange.png"/>
             </MDBNavLink>
-          </MDBNavItem> 
+          </MDBNavItem>  */}
 
           <MDBNavItem>
             <MDBNavLink to={{ pathname: "/profile", state: { useremail:this.props.useremail} }}
